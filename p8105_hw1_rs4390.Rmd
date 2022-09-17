@@ -21,3 +21,20 @@ data("penguins", package = "palmerpenguins")
 The penguins dataset contains `r nrow(penguins)` observations of individual penguins. There are `r ncol(penguins)` total variables that detail the penguins' physical dimensions, sex, year, species, and island. 
 
 The penguins in the dataset are from 3 islands (Biscoe, Dream, and Torgersen), 3 years (2007, 2008, and 2009), and represent 3 species (Adelie, Chinstrap, and Gentoo). The other variables include: bill length, bill depth, flipper length, body mass, and sex. The mean flipper length of the dataset is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE))` mm. 
+
+## Scatterplot 
+
+```{r scatterplot, echo = FALSE, message=FALSE}
+penguins %>%
+  ggplot(aes(
+    x = bill_length_mm, 
+    y = flipper_length_mm, 
+    color = species)) + 
+  geom_point() + 
+  xlab("Bill Length") + 
+  ylab("Flipper Length") + 
+  labs(color = "Penguin Species")
+
+ggsave("hw1_penguins_scatterplot_rs4390.png")
+```
+
