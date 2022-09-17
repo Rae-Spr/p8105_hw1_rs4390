@@ -31,10 +31,46 @@ penguins %>%
     y = flipper_length_mm, 
     color = species)) + 
   geom_point() + 
-  xlab("Bill Length") + 
-  ylab("Flipper Length") + 
+  xlab("Bill Length (mm)") + 
+  ylab("Flipper Length (mm)") + 
   labs(color = "Penguin Species")
 
 ggsave("hw1_penguins_scatterplot_rs4390.png")
+```
+
+# Problem 2 
+
+## New data frame 
+```{r data frame}
+
+hw1_df = 
+  hw1_df = tibble(
+    norm_samp = rnorm(10), 
+    norm_samp_pos = norm_samp > 0, 
+    var_char = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
+    var_factor = factor(c("male", "female", "nonbinary", "male", "male", "nonbinary", "male", "male", "female", "nonbinary")),
+  )
+
+x <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
+vectorLength = length(x)
+cat("Length of vector x is :", vectorLength)
+
+y <- c("male", "female", "nonbinary", "male", "male", "nonbinary", "male", "male", "female", "nonbinary")
+vectorLength = length(y)
+cat("Length of vector y is :", vectorLength)
+  
+```
+
+I created a data frame comprised of:
+
+* a random sample of size 10 from a standard Normal distribution with `rnorm`
+* a logical vector indicating whether elements of the sample are greater than 0 with `norm_samp_pos`
+* a character vector of length 10 with `var_char`
+* a factor vector of length 10, with 3 different factor “levels” with `var_factor`
+
+## Taking mean of each variable
+
+```{r}
+
 ```
 
