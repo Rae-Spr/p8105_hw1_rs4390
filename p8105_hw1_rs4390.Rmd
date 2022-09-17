@@ -70,7 +70,45 @@ I created a data frame comprised of:
 
 ## Taking mean of each variable
 
-```{r}
+### Mean of norm_samp
+```{r mean attempt of norm_samp}
+mean (pull (hw1_df, norm_samp))
+```
+
+### Mean of norm_samp_pos
+```{r mean attempt of norm_samp_pos}
+mean (pull (hw1_df, norm_samp_pos))
+```
+
+### Mean of var_char
+```{r mean attempt of var_char}
+mean (pull (hw1_df, var_char))
+```
+
+### Mean of var_factor
+```{r mean attempt of var_factor}
+mean (pull (hw1_df, var_factor))
+```
+
+_Outcome_: I was able to take the mean of `norm_samp` since it is a numeric variable. Surprisingly, I was also able to take the mean of `norm_samp_pos` even though that variable is logical and not numeric. I was not able to take the mean of `var_factor` or `var_char` because both are factor and character variables, respectively. 
+
+## Applying as.numeric 
+
+```{r as.numeric, eval = FALSE}
+
+var_char = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
+V <- factor(var_char)
+as.numeric (V) 
+
+var_factor = factor(c("male", "female", "nonbinary", "male", "male", "nonbinary", "male", "male", "female", "nonbinary"))
+as.numeric (var_factor)
+
+norm_samp = rnorm(10)
+norm_samp_pos = norm_samp > 0
+as.numeric(norm_samp_pos)
 
 ```
 
+_Outcome_: In order to convert the character variable into a numeric variable via `as.numeric`, I had to first convert the character variable into a factor variable. Character variables are string variables, but when converted to a factor, they are given factor levels which then correspond to numeric outputs (ex. outputs 1, 2, and 3 based on the three factor levels "male", "female", and "nonbinary"). This works because factor variables are categorical, meaning they have a finite, predefined number of categories/levels depending on the dataset. In this case, our factor variable has 3 categories/levels ("male", "female", and "nonbinary"). 
+
+Logical variables like `norm_samp_pos` only have two levels/categories because it is a binary variable. The only options are 0 or 1 (true or false). That is why you can immediately take the mean of a logical variable because it has an inherent numeric value, whereas factor variables first have to be converted into numeric values via `as.numeric` before the mean can be taken. When converted to numeric values, the factor levels will then correspond to numeric outputs as seen in this example.
